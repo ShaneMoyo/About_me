@@ -3,6 +3,8 @@ alert('Hello, my name is Shane. Welcome to my project!');
 var playerName = prompt('What is your name?');
 var player = confirm('Hi ' + playerName + ' Would you like to try my guessing game?');
 var score = 0;
+var randomNum = Math.floor((Math.random() * 10) + 1);
+console.log(randomNum);
 
 if ( player ) {
   alert('Great! I love games, let\'s get started');
@@ -50,10 +52,10 @@ if ( player ) {
   if (fourthQuestion.charAt(0) === 'y') {
     alert('No way! My favorite color has been red ever since I can remember!');
     alert('Ok we are on to the last question, get ready!');
-    score = score + 1;
   } else { 
     alert('That is right! My favorite color is red!');
     alert('Ok we are on to the last question, get ready!');
+    score = score + 1;
   }
   console.log( playerName + ' answered question #4 with ' + fourthQuestion);
 
@@ -67,8 +69,30 @@ if ( player ) {
   }
   console.log( playerName + ' answered question #5 with ' + fithQuestion);
 
+  //Question 6
+  var hiddenNum = randomNum;
+  var userGuess = prompt( 'Try guessing the number I am thinking of between 1 and 10.');
+  var guessCount = 0;
+  console.log(userGuess);
+  while ( hiddenNum != userGuess && guessCount < 3 ) {
+    var guessLeft = 3 - guessCount;
+    if (hiddenNum > userGuess) {
+      userGuess = prompt('Too low, guess higher. You have ' + guessLeft + ' guesses left!');
+      guessCount = guessCount + 1;
+    } else { 
+      userGuess = prompt('Too high, guess lower. You have ' + guessLeft + ' guesses left!');
+      guessCount = guessCount + 1; 
+    }
+  }
+  if ( hiddenNum == userGuess) { 
+    alert('You are right!');
+    score = score + 1;
+  } else { 
+    alert('Sorry you ran out of guesses. The number I was thinking of was ' + hiddenNum + '!');
+  }
+  
   //All done!
-  var finalScore = 'You got ' + score + ' out of 5 right!';
+  var finalScore = 'You got ' + score + ' out of 6 right!';
   if( score >= 3 ) {
     alert(finalScore + ' Wow, you know me pretty well!'); 
   } else {
