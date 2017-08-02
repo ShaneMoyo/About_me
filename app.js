@@ -37,7 +37,7 @@ if ( player ) {
     alert('I do like to draw, it is my favorite hobby!');
   }
   if (score === 3) {
-    alert('Wow' + playerName + '! 3 in a row! You know me pretty well!');
+    alert('Wow ' + playerName + '! 3 in a row! You know me pretty well!');
   } else if ( score === 0) {
     alert('Dont give up ' + playerName + '! 2 more to go!');
   } else { 
