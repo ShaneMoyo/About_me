@@ -1,4 +1,4 @@
-//Greeting
+//Experimenting with calling all script from an array. 
 var dialogue = ['Hello, my name is Shane. Welcome to my project!', 'What is your name?', 
   ' Would you like to try my guessing game?', 'Great! I love games, let\'s get started', 
   'Our guest would like to play our game.', 'Do I live in Oregon?', 'Wow! You are right!',
@@ -20,19 +20,20 @@ var dialogue = ['Hello, my name is Shane. Welcome to my project!', 'What is your
   'You are right! I have always wanted to go to ', 'here is a list of all the countries I would like to go to ',
   'Sorry, you ran out of guesses. ', 'Here is a list of all the countries I would like to go to. ', 
   ' answered question #7 with ', ' answered question #6 with '];
+
+//Array for question #7 
 var countries = ['mexico', 'cuba', 'japan', 'italy', 'spain'];
+
+//Greeting.  
 alert( dialogue[0] );
 var playerName = prompt( dialogue[1] );
 var player = confirm( 'Hi ' + playerName + dialogue[2] );
 var score = 0;
-var randomNum = Math.floor((Math.random() * 10) + 1);
-console.log(randomNum);
-console.log(dialogue[21]);
 
+//Asks Player if they would like to play a game. 
 if ( player ) {
   alert( dialogue[3] );
-  console.log( dialogue[47] );
-  
+  console.log( dialogue[4] );
   // Question #1
   var firstQuestion = prompt( dialogue[5] ).toLowerCase();
   if( firstQuestion.charAt(0) === 'y') {
@@ -91,7 +92,8 @@ if ( player ) {
   console.log( playerName + dialogue[28] + fithQuestion);
 
   //Question 6
-  var hiddenNum = randomNum;
+  var hiddenNum = Math.floor((Math.random() * 10) + 1);
+  console.log(hiddenNum);
   var userGuess6 = prompt( dialogue[29]);
   var guessCount6 = 0;
   while ( hiddenNum != userGuess6 && guessCount6 < 3 ) {
@@ -99,16 +101,17 @@ if ( player ) {
     if (hiddenNum > userGuess6) {
       userGuess6 = prompt(dialogue[31] + guessLeft + dialogue[30]);
       guessCount6 = guessCount6 + 1;
+      console.log(playerName + dialogue[48] + userGuess6);
     } else { 
       userGuess6 = prompt(dialogue[32] + guessLeft + dialogue[30]);
       guessCount6 = guessCount6 + 1;
       console.log(playerName + dialogue[48] + userGuess6);
     }
   }
-  if ( hiddenNum == userGuess6) { 
+  if ( hiddenNum == userGuess6) {
     alert(dialogue[6]);
     score = score + 1;
-  } else { 
+  } else {
     alert(dialogue[33] + hiddenNum + '!');
   }
   alert(dialogue[22]);
@@ -116,7 +119,7 @@ if ( player ) {
   //Question #7
   var userGuess7 = prompt(dialogue[41]).toLowerCase();
   var guessCount7 = 0;
-  while( !countries.includes(userGuess7) && guessCount7 < 6) {
+  while( !countries.includes(userGuess7) && guessCount7 < 5) {
     var guessLeft7 = 5 - guessCount7;
     var userGuess7 = prompt(dialogue[42]
     + guessLeft7 + ' guesses left!').toLowerCase();
@@ -126,7 +129,7 @@ if ( player ) {
 
   if (countries.includes(userGuess7)) {
     alert(dialogue[43] + userGuess7 + '!');
-    alert(dialogue[44] + countries[0] + ', ' + countries[1] + ', ' 
+    alert(dialogue[44] + countries[0] + ', ' + countries[1] + ', '
     + countries[2] + ', ' + countries[3] + ' and ' + countries[4] + '!' );
     score = score + 1;
     console.log(playerName + dialogue[47] + userGuess7);
@@ -134,8 +137,7 @@ if ( player ) {
     + countries[2] + ', ' + countries[3] + ' and ' + countries[4] + '!');
   console.log(playerName + dialogue[47] + userGuess7);
   }
-  
-  //All done!
+  //Game Finished 
   var finalScore = 'You got ' + score + dialogue[34];
   if( score >= 3 ) {
     alert(finalScore + dialogue[35]); 
@@ -143,7 +145,7 @@ if ( player ) {
     alert(finalScore + dialogue[36]);
   }
   alert(dialogue[37] + playerName + dialogue[38]);
-
+//Our guest does not want to play our game.
 } else {
   alert('Ok, ' + playerName + dialogue[39]);
   console.log(dialogue[40]);
