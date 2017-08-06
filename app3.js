@@ -1,7 +1,7 @@
 //Welcome to my guessing game javascript. I tried to practie using arrays and functions to get rid of redundancy. 
 //I ended up getting my 150 line code down to 60(not counting the comments) but, I feel it may be a bit hard to read.
 //I went ahead and added comments that somewhat narrate whats going which I hope will make it more readable. 
-//If you prefer the more readable longer version I have included it here under the file name app2.js.
+//If you prefer the more readable version I have included it here under the file name app2.js.
 
 //Important variables.
 var score = 0;
@@ -11,6 +11,7 @@ var yesOrno = ['y', 'y', 'y', 'n', 'y'];
 var mChoice = ['mexico', 'cuba', 'japan', 'italy', 'spain'];
 var playerName = 0;
 var player = 0;
+var guessCount = 0;
 //Arrays containing string necessary for the questionsMachine function to build all 7 questions. 
 var questions = ['Do I live in Oregon?', 'Do I like to travel?', 'Do I enjoy drawing?', 'Is my favorite color blue?',
   'Do I like pizza?', 'Can you guess what number I am thinking of between 1 and 10?', 'Try naming a country I want to visit.'];
@@ -37,8 +38,9 @@ function guessingGame() {
     for (i = 0; i < 7; i++) {
       questionMachine(i);
     }
+    endGame();
   } else { alert('Ok maybe next time!'); }
-  endGame();
+  
 }
 function endGame() {
   alert('You got ' + score + ' out of 7 right! Thank you for playing!');
@@ -58,7 +60,6 @@ function questionMachine(i) {
     console.log(playerName + ' answered question ' + (i + 1) + ' with ' + answer);
   } else {
     //Creates multiple choice questions when i > 5.
-    var guessCount = 0;
     while (!mChoice.includes(answer) && parseInt(answer) !== rN && guessCount < chances[i - 5]) {
       var guessLeft = chances[i - 5] - guessCount;
       if (i === 5 && rN > answer) {
